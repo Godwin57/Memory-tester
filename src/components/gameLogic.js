@@ -2,6 +2,24 @@ const getCardNumberByLevel = levelNum => levelNum * 6;
 
 const generateRandomNum = range => Math.floor(Math.random() * range);
 
+
+const shuffleArray = array => {
+    let newArray = [],
+        storeRandomNo = [];
+
+    for (let i = 0; i < array.length; i++) {
+        let random;
+        do {
+            random = generateRandomNum(array.length)
+        } while (storeRandomNo.includes(random))
+
+        newArray = newArray.concat(array[random]);
+        storeRandomNo.push(random);
+    }
+
+    return newArray;
+}
+
 export const Difficulty = function () {
     function easy(array, cardsNum) {
         let generatedItems = [],
@@ -13,7 +31,7 @@ export const Difficulty = function () {
             } while (generatedItems.includes(array[randomNo]))
             generatedItems.push(array[randomNo]);
         }
-        return generatedItems;
+        return shuffleArray(generatedItems);
     }
 
     // Returns an array of arrays with the inner array containing objects which have similar values of
@@ -56,13 +74,13 @@ export const Difficulty = function () {
         const similarObj = array.filter(obj => obj.uniqueName),
             groupedItems = Grouper(similarObj, 'uniqueName');
 
-        return getOneDimensionSimilarArray(groupedItems, cardsNum);
+        return shuffleArray(getOneDimensionSimilarArray(groupedItems, cardsNum));
     }
 
     function medium(array, cardsNum) {
         const easyPart = easy(array, cardsNum / 2),
             hardPart = hard(array, cardsNum / 2);
-        return easyPart.concat(hardPart);
+        return shuffleArray(easyPart.concat(hardPart));
     }
 
     return { easy, medium, hard }
