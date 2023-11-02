@@ -7,7 +7,7 @@ function App() {
     const [animals, setAnimals] = useState([]);
 
     useEffect(() => {
-        setAnimals(() => hard(animalEmojis, 10));
+        setAnimals(() => medium(animalEmojis, 10));
     }, [])
 
     return (

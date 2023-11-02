@@ -16,14 +16,53 @@ export const Difficulty = function () {
         return generatedItems;
     }
 
+    // Returns an array of arrays with the inner array containing objects which have similar values of
+    // the property which was passed in as the second argument
+    class GroupingError extends Error { };
+    function Grouper(array, prop) {
+        const groupedObjects = new Map();
+        array.forEach(obj => {
+            const property = obj[`${prop}`];
+            if (!property) throw new GroupingError("Where's the prop you want me to use?")
+            if (!groupedObjects.has(property)) {
+                groupedObjects.set(property, []);
+            }
+            groupedObjects.get(property).push(obj);
+        })
+        return Array.from(groupedObjects.values());
+    }
+
+    // Returns 1-dimensional arr from an arr of arrs. Removes extra elements when returned arr length > itemsLimit
+    function getOneDimensionSimilarArray(array, itemsLimit) {
+        let oneDimensionGroupedItems = [],
+            storeRandomNum = [];
+
+        for (; ;) {
+            console.log("We move")
+            if (oneDimensionGroupedItems.length >= itemsLimit) break;
+            let randomNo;
+            do {
+                randomNo = generateRandomNum(array.length);
+            } while (storeRandomNum.includes(randomNo))
+            oneDimensionGroupedItems.push(...array[randomNo])
+            storeRandomNum.push(randomNo);
+        }
+
+        while (oneDimensionGroupedItems.length > itemsLimit) oneDimensionGroupedItems.pop();
+        return oneDimensionGroupedItems;
+    }
+
     function hard(array, cardsNum) {
-        let groupItems = array.filter(obj => obj.uniqueName);
-        return groupItems;
+        const similarObj = array.filter(obj => obj.uniqueName),
+            groupedItems = Grouper(similarObj, 'uniqueName');
+
+        return getOneDimensionSimilarArray(groupedItems, cardsNum);
     }
 
     function medium(array, cardsNum) {
-        let easyPart = easy(array, cardsNum / 2);
-        return easyPart;
+        const easyPart = easy(array, cardsNum / 2),
+            hardPart = hard(array, cardsNum / 2);
+        return easyPart.concat(hardPart);
     }
 
     return { easy, medium, hard }
