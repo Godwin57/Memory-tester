@@ -1,4 +1,4 @@
-export let animalEmojis = [
+export const animalEmojis = [
     {
         "codes": "1F435",
         "char": "🐵",
