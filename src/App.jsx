@@ -1,29 +1,21 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import './App.css'
 import WelcomePage from "./components/WelcomePage";
+import DisplayGame from "./components/DisplayGame";
+import SelectDifficulty from "./components/SelectDifficulty";
 import {animalEmojis} from "./assets/Emojis";
-import { Difficulty } from "./components/gameLogic";
 
 function App() {
-    const {easy, medium, hard} = Difficulty;
     const [showGame, setShowGame] = useState(false);
-    const [animals, setAnimals] = useState([]);
-
-    useEffect(() => {
-        setAnimals(() => hard(animalEmojis, 10));
-    }, [])
+    const [name, setName] = useState('');
+    const [difficulty, setDifficulty] = useState('');
 
     return (
-        <>{!showGame?
-            <WelcomePage setShowGame={setShowGame}/> :
-            <div>{animals.map(animal => 
-                <div key={animal.code}>
-                    <p>{animal.char}</p>
-                    <p>{animal.name}</p>
-                </div>
-            )}
-            </div>}
-            <p>Yeah</p>
-        </>
+        <SelectDifficulty difficulty={difficulty} setDifficulty={setDifficulty}/>
+        // <>{!showGame?
+        //     <WelcomePage setShowGame={setShowGame} name={name} setName={setName}/> :
+        //     <DisplayGame animalEmojis={animalEmojis}/>}
+        // </>
     );
 }
 

@@ -1,8 +1,20 @@
-function WelcomePage({setShowGame}) {
+function WelcomePage({setShowGame, name, setName}) {
+    const handleClick = () => {
+        if (!name) {
+            alert("Please enter your name");
+            return;
+        }
+        setShowGame(true);
+    }
+
     return (
         <>
             <h1>This is the welcome page of this app</h1>
-            <button onClick={() => setShowGame(true)}>Show game?</button>
+
+            <p>What is your name
+                <input type="text" value={name} onChange={e => setName(e.target.value)} />
+            </p>
+            <button onClick={() => handleClick()}>Show game?</button>
         </>
     );
 }

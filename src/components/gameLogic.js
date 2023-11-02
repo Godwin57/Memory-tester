@@ -1,6 +1,6 @@
 const generateRandomNum = range => Math.floor(Math.random() * range);
 
-function getUniqueLimitedArrElem(arr, limit) {
+function randomlyBuildArr(arr, limit) {
     let generatedItems = [],
         randomNo;
 
@@ -13,10 +13,10 @@ function getUniqueLimitedArrElem(arr, limit) {
     return generatedItems;
 }
 
-const shuffleArray = array => getUniqueLimitedArrElem(array, array.length);
+const shuffleArray = array => randomlyBuildArr(array, array.length);
 
 export const Difficulty = function () {
-    const easy = (array, cardsLimit) => shuffleArray(getUniqueLimitedArrElem(array, cardsLimit));
+    const easy = (array, cardsLimit) => shuffleArray(randomlyBuildArr(array, cardsLimit));
 
     // Returns an array of arrays with the inner array containing objects which have similar values of
     // the property which was passed in as the second argument
@@ -40,7 +40,6 @@ export const Difficulty = function () {
             storeRandomNum = [];
 
         for (; ;) {
-            console.log("We move")
             if (oneDimensionGroupedItems.length >= itemsLimit) break;
             let randomNo;
             do {
