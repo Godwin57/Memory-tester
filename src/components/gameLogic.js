@@ -1,38 +1,22 @@
-const getCardNumberByLevel = levelNum => levelNum * 6;
-
 const generateRandomNum = range => Math.floor(Math.random() * range);
 
+function getUniqueLimitedArrElem(arr, limit) {
+    let generatedItems = [],
+        randomNo;
 
-const shuffleArray = array => {
-    let newArray = [],
-        storeRandomNo = [];
-
-    for (let i = 0; i < array.length; i++) {
-        let random;
+    for (let i = 0; i < limit; i++) {
         do {
-            random = generateRandomNum(array.length)
-        } while (storeRandomNo.includes(random))
-
-        newArray = newArray.concat(array[random]);
-        storeRandomNo.push(random);
+            randomNo = generateRandomNum(arr.length)
+        } while (generatedItems.includes(arr[randomNo]))
+        generatedItems.push(arr[randomNo]);
     }
-
-    return newArray;
+    return generatedItems;
 }
 
-export const Difficulty = function () {
-    function easy(array, cardsNum) {
-        let generatedItems = [],
-            randomNo;
+const shuffleArray = array => getUniqueLimitedArrElem(array, array.length);
 
-        for (let i = 0; i < cardsNum; i++) {
-            do {
-                randomNo = generateRandomNum(array.length)
-            } while (generatedItems.includes(array[randomNo]))
-            generatedItems.push(array[randomNo]);
-        }
-        return shuffleArray(generatedItems);
-    }
+export const Difficulty = function () {
+    const easy = (array, cardsLimit) => shuffleArray(getUniqueLimitedArrElem(array, cardsLimit));
 
     // Returns an array of arrays with the inner array containing objects which have similar values of
     // the property which was passed in as the second argument
