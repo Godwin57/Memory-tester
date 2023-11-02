@@ -68,17 +68,3 @@ export const Difficulty = function () {
 
     return { easy, medium, hard }
 }();
-
-// console.log(Difficulty.medium([1, 2, 3, 4, 5, 6, 7, 8, 9, 0], 6));
-// console.log(Difficulty.hard(animalEmojis))
-
-/* 
-Objective
-    Accept an arrayList and the number of items to produce
-Constraint
-    No card can be repeated for the same level
-Pseudo-code
-    Accept an arrayList and the number of cards to produce from it
-    Create an array to store the indexes of the array-items that have been produced
-    Randomly select items to be selected. Store their index so they're not repeated.
-*/

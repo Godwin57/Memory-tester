@@ -8,16 +8,30 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore}) {
     // Reminder: use an animation when working on the game over page
     const [gameOver, setGameOver] = useState(false);
     const [gameLevel, setGameLevel] = useState(1);
+    const [finishedLevel, setFinishedLevel] = useState(false);
     const [clickCount, setClickCount] = useState(0);
 
+    const getCardsPerLevel = level => level * 6;
+
     useEffect(() => {
-        setAnimals(() => easy(animalEmojis, 10));
-    }, [])
+        setAnimals(() => easy(animalEmojis, getCardsPerLevel(gameLevel)));
+    }, [finishedLevel])
 
     useEffect(() => {
         if(score < highScore) return;
         setHighScore(_ => score)
     }, [score])
+
+    function handleLevelChange() {
+        if(clickCount === animals.length - 1){
+            if(gameLevel === 5){
+                console.log("You win. You're really a winner");
+                return;
+            }
+            setGameLevel(_ => gameLevel + 1)
+            setFinishedLevel(_ => true);
+        }
+    }
 
     function handleEmojiClick(anim) {
         if (anim.clicked) {
@@ -36,6 +50,7 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore}) {
         console.log("I've been assaulted");
 
         setAnimals(() => shuffleArray(animals));
+        handleLevelChange();
     }
 
     return (
