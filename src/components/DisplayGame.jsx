@@ -7,6 +7,8 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore}) {
     const [animals, setAnimals] = useState([]);
     // Reminder: use an animation when working on the game over page
     const [gameOver, setGameOver] = useState(false);
+    const [gameLevel, setGameLevel] = useState(1);
+    const [clickCount, setClickCount] = useState(0);
 
     useEffect(() => {
         setAnimals(() => easy(animalEmojis, 10));
@@ -30,6 +32,7 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore}) {
 
         anim.clicked = true;
         setScore(score => score + 1)
+        setClickCount(_ => clickCount + 1)
         console.log("I've been assaulted");
 
         setAnimals(() => shuffleArray(animals));
@@ -39,6 +42,7 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore}) {
         <>
             <p>Score: {score}</p>
             <p>High Score: {highScore}</p>
+            <p>Game Level: {gameLevel}</p>
             <div>{animals.map(animal => 
                 <div key={animal.codes.toString()} >
                     <p style={{'cursor' : 'pointer'}} onClick={e => handleEmojiClick(animal)}>{animal.char}</p>
