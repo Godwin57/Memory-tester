@@ -9,13 +9,19 @@ function App() {
     const [showGame, setShowGame] = useState(false);
     const [name, setName] = useState('');
     const [difficulty, setDifficulty] = useState('');
+    const [score, setScore] = useState(0);
+    const [highScore, setHighScore] = useState(0);
 
     return (
-        <SelectDifficulty difficulty={difficulty} setDifficulty={setDifficulty}/>
-        // <>{!showGame?
-        //     <WelcomePage setShowGame={setShowGame} name={name} setName={setName}/> :
-        //     <DisplayGame animalEmojis={animalEmojis}/>}
-        // </>
+        <>
+            <WelcomePage setShowGame={setShowGame} name={name} setName={setName}/> 
+            {/* {!showGame?
+                <SelectDifficulty difficulty={difficulty} name={name} setDifficulty={setDifficulty}/>:
+                <DisplayGame animalEmojis={animalEmojis}/>
+            } */}
+            <DisplayGame animalEmojis={animalEmojis} score={score} setScore={setScore}
+                highScore={highScore} setHighScore={setHighScore}/>
+        </>
     );
 }
 

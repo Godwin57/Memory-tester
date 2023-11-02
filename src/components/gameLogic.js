@@ -13,7 +13,7 @@ function randomlyBuildArr(arr, limit) {
     return generatedItems;
 }
 
-const shuffleArray = array => randomlyBuildArr(array, array.length);
+export const shuffleArray = array => randomlyBuildArr(array, array.length);
 
 export const Difficulty = function () {
     const easy = (array, cardsLimit) => shuffleArray(randomlyBuildArr(array, cardsLimit));
