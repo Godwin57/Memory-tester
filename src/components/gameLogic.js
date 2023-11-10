@@ -35,7 +35,7 @@ export const Difficulty = function () {
     }
 
     // Returns 1-dimensional arr from an arr of arrs. Removes extra elements when returned arr length > itemsLimit
-    function getOneDimensionSimilarArray(array, itemsLimit) {
+    function getOneDimensionArray(array, itemsLimit) {
         let oneDimensionGroupedItems = [],
             storeRandomNum = [];
 
@@ -57,7 +57,7 @@ export const Difficulty = function () {
         const similarObj = array.filter(obj => obj.uniqueName),
             groupedItems = Grouper(similarObj, 'uniqueName');
 
-        return shuffleArray(getOneDimensionSimilarArray(groupedItems, cardsNum));
+        return shuffleArray(getOneDimensionArray(groupedItems, cardsNum));
     }
 
     function medium(array, cardsNum) {
