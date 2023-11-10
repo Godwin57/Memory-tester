@@ -6,7 +6,6 @@ import SelectDifficulty from "./components/SelectDifficulty";
 import {animalEmojis} from "./assets/Emojis";
 
 function App() {
-    const [showGame, setShowGame] = useState(false);
     const [name, setName] = useState('');
     const [difficulty, setDifficulty] = useState('');
     const [score, setScore] = useState(0);
@@ -14,13 +13,10 @@ function App() {
 
     return (
         <>
-            <WelcomePage setShowGame={setShowGame} name={name} setName={setName}/> 
-            {/* {!showGame?
-                <SelectDifficulty difficulty={difficulty} name={name} setDifficulty={setDifficulty}/>:
-                <DisplayGame animalEmojis={animalEmojis}/>
-            } */}
+            <WelcomePage name={name} setName={setName}/>
+            <SelectDifficulty difficulty={difficulty} name={name} setDifficulty={setDifficulty}/>
             <DisplayGame animalEmojis={animalEmojis} score={score} setScore={setScore}
-                highScore={highScore} setHighScore={setHighScore}/>
+                highScore={highScore} setHighScore={setHighScore} difficulty={difficulty}/>
         </>
     );
 }

@@ -1,10 +1,9 @@
-function WelcomePage({setShowGame, name, setName}) {
+function WelcomePage({name, setName}) {
     const handleClick = () => {
         if (!name) {
             alert("Please enter your name");
             return;
         }
-        setShowGame(true);
     }
 
     return (
@@ -14,7 +13,8 @@ function WelcomePage({setShowGame, name, setName}) {
             <p>What is your name
                 <input type="text" value={name} onChange={e => setName(e.target.value)} />
             </p>
-            <button onClick={() => handleClick()}>Show game?</button>
+            {/* This button should contain a link. It'd be implemented when I learn routing */}
+            <button onClick={() => handleClick()}>Submit</button>
         </>
     );
 }

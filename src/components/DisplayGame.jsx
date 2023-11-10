@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { shuffleArray } from "./gameLogic";
 import { PerLevelFeatures } from "./gameLogic";
 
-function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore}) {
+function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore, difficulty}) {
     const {easy, medium, hard} = Difficulty;
     const {getCardNumberPerLevel, getGameTimePerLevel} = PerLevelFeatures;
     const [animals, setAnimals] = useState([]);
@@ -15,11 +15,21 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore}) {
     const [timePerLevel, setTimePerLevel] = useState(0);
 
     useEffect(() => {
-        setTimePerLevel(() => getGameTimePerLevel(gameLevel, 'easy'))
+        setTimePerLevel(() => getGameTimePerLevel(gameLevel, difficulty))
     }, [gameLevel])
 
     useEffect(() => {
-        setAnimals(() => easy(animalEmojis, getCardNumberPerLevel(gameLevel)));
+        switch(difficulty){
+            case 'easy':
+                setAnimals(() => easy(animalEmojis, getCardNumberPerLevel(gameLevel)));
+                break;
+            case 'medium':
+                setAnimals(() => medium(animalEmojis, getCardNumberPerLevel(gameLevel)));
+                break;
+            case 'hard':
+                setAnimals(() => hard(animalEmojis, getCardNumberPerLevel(gameLevel)));
+                break;
+        }
     }, [finishedLevel])
 
     useEffect(() => {
@@ -59,18 +69,23 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore}) {
     }
 
     return (
-        <>
-            <p>Score: {score}</p>
-            <p>You have {timePerLevel} seconds left</p>
-            <p>High Score: {highScore}</p>
-            <p>Game Level: {gameLevel}</p>
-            <div>{animals.map(animal => 
-                <div key={animal.codes.toString()} >
-                    <p style={{'cursor' : 'pointer'}} onClick={e => handleEmojiClick(animal)}>{animal.char}</p>
-                    <p>{animal.name}</p>
+        <>  {difficulty !== ''? <div>
+                <p>Score: {score}</p>
+                <p>You have {timePerLevel} seconds left</p>
+                <p>High Score: {highScore}</p>
+                <p>Game Level: {gameLevel}</p>
+                <div>{animals.map(animal => 
+                    <div key={animal.codes.toString()} >
+                        <p style={{'cursor' : 'pointer'}} onClick={e => handleEmojiClick(animal)}>{animal.char}</p>
+                        <p>{animal.name}</p>
+                    </div>
+                )}
                 </div>
-            )}
+            </div> : 
+            <div>
+                <p>To play game, you have to choose a difficulty first</p>
             </div>
+            }
         </>
     );
 }
