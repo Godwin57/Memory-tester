@@ -1,9 +1,11 @@
 import { Difficulty } from "./gameLogic";
 import { useState, useEffect } from "react";
 import { shuffleArray } from "./gameLogic";
+import { PerLevelFeatures } from "./gameLogic";
 
 function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore}) {
     const {easy, medium, hard} = Difficulty;
+    const {getCardNumberPerLevel, getGameTimePerLevel} = PerLevelFeatures;
     const [animals, setAnimals] = useState([]);
     // Reminder: use an animation when working on the game over page
     const [gameOver, setGameOver] = useState(false);

@@ -68,3 +68,24 @@ export const Difficulty = function () {
 
     return { easy, medium, hard }
 }();
+
+export const PerLevelFeatures = function () {
+    const getCardNumberPerLevel = level => level * 6;
+
+    const getGameTimePerLevel = (level, difficulty) => {
+        if (difficulty.toLowerCase() === 'easy') {
+            // 3 Secs per card
+            return getCardNumberPerLevel(level) * 3;
+        }
+        if (difficulty.toLowerCase() === 'medium') {
+            // 3 Secs per card
+            return getCardNumberPerLevel(level) * 2;
+        }
+        if (difficulty.toLowerCase() === 'hard') {
+            // 3 Secs per card
+            return getCardNumberPerLevel(level) * 1;
+        }
+    }
+
+    return { getCardNumberPerLevel, getGameTimePerLevel }
+}();
