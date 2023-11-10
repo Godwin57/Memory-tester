@@ -12,11 +12,14 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore}) {
     const [gameLevel, setGameLevel] = useState(1);
     const [finishedLevel, setFinishedLevel] = useState(false);
     const [clickCount, setClickCount] = useState(0);
-
-    const getCardsPerLevel = level => level * 6;
+    const [timePerLevel, setTimePerLevel] = useState(0);
 
     useEffect(() => {
-        setAnimals(() => easy(animalEmojis, getCardsPerLevel(gameLevel)));
+        setTimePerLevel(() => getGameTimePerLevel(gameLevel, 'easy'))
+    }, [gameLevel])
+
+    useEffect(() => {
+        setAnimals(() => easy(animalEmojis, getCardNumberPerLevel(gameLevel)));
     }, [finishedLevel])
 
     useEffect(() => {
@@ -58,6 +61,7 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore}) {
     return (
         <>
             <p>Score: {score}</p>
+            <p>You have {timePerLevel} seconds left</p>
             <p>High Score: {highScore}</p>
             <p>Game Level: {gameLevel}</p>
             <div>{animals.map(animal => 

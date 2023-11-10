@@ -69,10 +69,15 @@ export const Difficulty = function () {
     return { easy, medium, hard }
 }();
 
+class PerLevelFeaturesError extends Error { };
 export const PerLevelFeatures = function () {
     const getCardNumberPerLevel = level => level * 6;
 
     const getGameTimePerLevel = (level, difficulty) => {
+        if (level < 1 || level > 5) {
+            throw new PerLevelFeaturesError("Your game level can't be less than 1 or more than 5!")
+        }
+
         if (difficulty.toLowerCase() === 'easy') {
             // 3 Secs per card
             return getCardNumberPerLevel(level) * 3;
