@@ -16,18 +16,18 @@ button{
   border: 1px solid white;
   color: white;
   cursor: pointer;
+  font-size: 18px;
 }
 
 a{
   color: white;
   text-decoration: none;
-  font-size: 18px;
 }
 
 .Welcome input{
   margin-left: 10px;
 }
 
-.GameOver button{
+.GameOver button, .Difficulty button{
   display: block;
 }

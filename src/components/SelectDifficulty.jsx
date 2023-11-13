@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function SelectDifficulty({name, setDifficulty}) {
     return (
-        <>
+        <div className="Difficulty">
             <h1>Hi, {name}</h1>
             <form>
                 <input type="radio" name = 'diff' value={'easy'} onChange={e => setDifficulty(e.target.value)}/>Easy
@@ -11,7 +11,7 @@ function SelectDifficulty({name, setDifficulty}) {
 
                 <button><Link to="/gameDisplay">Submit choice</Link></button>
             </form>
-        </>
+        </div>
     );
 }
 

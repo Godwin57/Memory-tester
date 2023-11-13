@@ -14,7 +14,7 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore, di
     const [gameLevel, setGameLevel] = useState(1);
     const [finishedLevel, setFinishedLevel] = useState(false);
     const [clickCount, setClickCount] = useState(0);
-    const [timePerLevel, setTimePerLevel] = useState();
+    const [timePerLevel, setTimePerLevel] = useState(null);
     const [pause, setPause] = useState(false)
 
     let timer;
@@ -38,8 +38,17 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore, di
     }, [pause])
 
     useEffect(() => {
-        setTimePerLevel(() => getGameTimePerLevel(gameLevel, difficulty))
-    }, [gameLevel, difficulty])
+        setTimePerLevel(() => getGameTimePerLevel(gameLevel))
+    }, [gameLevel])
+
+    useState(() => {
+        if (gameOver){
+            setGameLevel((level) = level = 1);
+            setAnimals(anim => anim = []);
+            setClickCount(count => count = 0);
+            setTimePerLevel(time => time = null)
+        }
+    }, [gameOver])
 
     useEffect(() => {
         difficulty === 'easy' && setAnimals(() => easy(animalEmojis, getCardNumberPerLevel(gameLevel)));
@@ -71,18 +80,12 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore, di
 
         if (anim.clicked) {
             setGameOver(true);
-            console.log("Game over")
-            return;
-        }
-        if (gameOver){
-            alert("Stop clicking me! You're already out of the game");
             return;
         }
 
         anim.clicked = true;
         setScore(score => score + 1)
         setClickCount(_ => clickCount + 1)
-        console.log("I've been assaulted");
 
         setAnimals(() => shuffleArray(animals));
         handleLevelChange();
@@ -94,7 +97,7 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore, di
                 {difficulty !== ''? <div>
                     <p>Score: {score}</p>
                     <p>You have {timePerLevel} seconds left</p>
-                    <p>You c{difficulty}</p>
+                    <p>You choose: {difficulty}</p>
                     <p>High Score: {highScore}</p>
                     <p>Game Level: {gameLevel}</p>
                     <button onClick={() => setPause(!pause)}>{!pause? "Pause Game" : "Resume game"}</button>
