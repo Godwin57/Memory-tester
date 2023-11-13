@@ -17,7 +17,7 @@ function App() {
         {
             path: '/',
             element: <WelcomePage name={name} setName={setName}/>,
-            errorElement: ErrorPage
+            errorElement: <ErrorPage />
         },
 
         {

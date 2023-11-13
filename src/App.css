@@ -15,6 +15,7 @@ button{
   border-radius: 8px;
   border: 1px solid white;
   color: white;
+  cursor: pointer;
 }
 
 a{
@@ -25,4 +26,8 @@ a{
 
 .Welcome input{
   margin-left: 10px;
+}
+
+.GameOver button{
+  display: block;
 }

@@ -15,7 +15,7 @@ function ErrorPage() {
     return (
         <div style={styles}>
             <p>The page you're looking for doesn't exist pal.</p>
-            <Link to='/' style={{"color" : "lightGray"}}>Take this shortcut to go back Home instead</Link>
+            <button><Link to='/' style={{"color" : "lightGray"}}>Take this shortcut to go back Home instead</Link></button>
         </div>
     );
 }
