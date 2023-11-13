@@ -74,6 +74,11 @@ a{
   font-size: 100px;
 }
 
+.Welcome .animalImage:hover{
+  font-size: 110px;
+  transition: 1s;
+}
+
 .GameOver button, .Difficulty button{
   display: block;
 }
