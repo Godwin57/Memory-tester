@@ -22,6 +22,11 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore, di
             setTimePerLevel((time) => time - 1);
         }, 1000)
 
+        if (timePerLevel === 0){
+            clearTimeout(timer);
+            setGameOver(() => true);
+        }
+
         return () => clearTimeout(timer);
     })
 
