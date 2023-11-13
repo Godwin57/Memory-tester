@@ -2,6 +2,7 @@ import { Difficulty } from "./gameLogic";
 import { useState, useEffect } from "react";
 import { shuffleArray } from "./gameLogic";
 import { PerLevelFeatures } from "./gameLogic";
+import { Link } from "react-router-dom";
 
 function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore, difficulty}) {
     const {easy, medium, hard} = Difficulty;
@@ -76,6 +77,7 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore, di
             </div> : 
             <div>
                 <p>To play game, you have to choose a difficulty first</p>
+                <button><Link to="/difficulty">Take this shortcut back to the difficulty page</Link></button>
             </div>
             }
         </>

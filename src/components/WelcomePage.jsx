@@ -18,7 +18,7 @@ function WelcomePage({name, setName}) {
                 <input type="text" value={name} onChange={e => setName(e.target.value)} />
             </p>
             {/* This button should contain a link. It'd be implemented when I learn routing */}
-            <button onClick={(e) => handleClick(e)}><Link to="selectDifficulty">Submit</Link></button>
+            <button onClick={(e) => handleClick(e)}><Link to="difficulty">Submit</Link></button>
         </div>
     );
 }
