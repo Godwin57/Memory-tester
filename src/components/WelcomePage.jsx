@@ -32,7 +32,7 @@ function WelcomePage({name, setName, animalEmojis}) {
             <p className="animalImage">{animalEmoji.char}</p>
             <div className="Input">
                 <input type="text" value={name} onChange={(e) => setName(e.target.value)} maxLength={10} 
-                placeholder="Please enter your name here"/>
+                placeholder="Please enter your name here" autoFocus/>
             {name.length >= 3? (<button><Link to="difficulty">Submit</Link></button>) :
                 <button onClick={(e) => handleClick(e)}>Submit</button>}
             </div>
