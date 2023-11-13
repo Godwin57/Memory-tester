@@ -14,7 +14,7 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore, di
     const [gameLevel, setGameLevel] = useState(1);
     const [finishedLevel, setFinishedLevel] = useState(false);
     const [clickCount, setClickCount] = useState(0);
-    const [timePerLevel, setTimePerLevel] = useState(0);
+    const [timePerLevel, setTimePerLevel] = useState();
     const [pause, setPause] = useState(false)
 
     let timer;
@@ -25,6 +25,7 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore, di
 
         if (timePerLevel === 0){
             clearTimeout(timer);
+            setGameOver(() => true)
         }
 
         gameOver && clearTimeout(timer);
