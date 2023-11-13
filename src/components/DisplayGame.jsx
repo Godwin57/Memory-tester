@@ -16,6 +16,14 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore, di
     const [timePerLevel, setTimePerLevel] = useState(0);
 
     useEffect(() => {
+        const timer = setInterval(() => {
+            setTimePerLevel((time) => time - 1);
+        }, 1000)
+
+        return () => clearInterval(timer);
+    }, [gameLevel])
+
+    useEffect(() => {
         setTimePerLevel(() => getGameTimePerLevel(gameLevel, difficulty))
     }, [gameLevel, difficulty])
 
@@ -48,7 +56,7 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore, di
             return;
         }
         if (gameOver){
-            console.log("Stop clicking me! You're already out of the game");
+            alert("Stop clicking me! You're already out of the game");
             return;
         }
 

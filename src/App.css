@@ -3,7 +3,7 @@ body{
   color: white;
 }
 
-button{
+button, .btn{
   background: transparent;
   padding: 5px 10px;
   border-radius: 8px;
@@ -14,4 +14,9 @@ a{
   color: white;
   text-decoration: none;
   font-size: 18px;
+}
+
+.btn{
+  color: white;
+  cursor: pointer;
 }
