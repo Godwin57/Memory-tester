@@ -78,7 +78,6 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore, di
             setGameLevel(_ => gameLevel + 1)
             setFinishedLevel(_ => true);
         }
-        return;
     }
 
     function handleEmojiClick(anim) {

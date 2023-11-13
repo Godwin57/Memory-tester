@@ -16,7 +16,7 @@ function App() {
     const router = createBrowserRouter([
         {
             path: '/',
-            element: <WelcomePage name={name} setName={setName}/>,
+            element: <WelcomePage name={name} setName={setName} animalEmojis={animalEmojis}/>,
             errorElement: <ErrorPage />
         },
 

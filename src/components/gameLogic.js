@@ -1,6 +1,6 @@
 const generateRandomNum = range => Math.floor(Math.random() * range);
 
-function randomlyBuildArr(arr, limit) {
+export function randomlyBuildArr(arr, limit) {
     let generatedItems = [],
         randomNo;
 

@@ -1,5 +1,5 @@
 body{
-  background: rgb(47, 3, 61);
+  background: black;
   color: white;
 }
 
@@ -16,7 +16,7 @@ button{
   border: 1px solid white;
   color: white;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 a{
@@ -24,8 +24,45 @@ a{
   text-decoration: none;
 }
 
+/* Section for Welcome component */
+.Welcome{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.Welcome h1{
+  font-weight: bolder;
+  font-size: 50px;
+}
+
+.Welcome h1 span{
+  color: rgb(223, 223, 6);
+}
+
 .Welcome input{
-  margin-left: 10px;
+  border-radius: 15px;
+  background: rgb(24, 20, 20);
+  padding: 20px 30px;
+  color: white;
+  font-size: 18px;
+}
+
+.Welcome button{
+  padding: 25px 30px;
+  background: rgb(223, 223, 6);
+  border: none;
+  margin-left: -25px;
+}
+
+.Welcome button:hover{
+  background: rgb(160, 160, 11);
+}
+
+.Welcome .animalImage{
+  font-size: 100px;
 }
 
 .GameOver button, .Difficulty button{

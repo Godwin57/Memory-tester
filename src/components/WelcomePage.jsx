@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
+import { randomlyBuildArr } from "./gameLogic";
+import { useEffect, useState } from "react";
 
-function WelcomePage({name, setName}) {
+function WelcomePage({name, setName, animalEmojis}) {
+    const [animalEmoji, setAnimalEmoji] = useState({});
+
     const handleClick = e => {
         e.preventDefault();
         if(!name || name.length <= 3){
@@ -9,17 +13,30 @@ function WelcomePage({name, setName}) {
         }
     }
 
+    useEffect(() => {
+        setAnimalEmoji(_ => randomlyBuildArr(animalEmojis, 1)[0]);
+    }, [])
+
+    let timer;
+    useEffect(() => {
+        timer = setTimeout(() => {
+            setAnimalEmoji(_ => randomlyBuildArr(animalEmojis, 1)[0])
+        }, 5000)
+
+        return () => clearTimeout(timer);
+    });
+
     return (
         <div className="Welcome">
-            <h1>This is the welcome page of this app</h1>
-
-            <p>What is your name
+            <h1>Animal <span>Klash</span></h1>
+            <p className="animalImage">{animalEmoji.char}</p>
+            <div className="Input">
                 <input type="text" value={name} onChange={(e) => setName(e.target.value)} maxLength={10} 
-                    placeholder="Max 10 characters, min 3"/>
-            </p>
-            {/* This button should contain a link. It'd be implemented when I learn routing */}
+                placeholder="Please enter your name here"/>
             {name.length >= 3? (<button><Link to="difficulty">Submit</Link></button>) :
                 <button onClick={(e) => handleClick(e)}>Submit</button>}
+            </div>
+            
         </div>
     );
 }
