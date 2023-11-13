@@ -19,12 +19,12 @@ function SelectDifficulty({name, difficulty, setDifficulty}) {
                         <div><input type="radio" name = 'diff' value={'hard'} onChange={e => setDifficulty(e.target.value)}/>Hard</div>
                     </div>
 
-                    {difficulty !== ''? <Link to="/gameDisplay"><button onClick={e => handleClick(e)}>Continue</button></Link> :
+                    {difficulty !== ''? <Link to="/gameDisplay"><button>Continue</button></Link> :
                     <button onClick={e => handleClick(e)}>Continue</button>}
                 </form>
             </div>:
-            <div>
-                <p>You can't proceed without giving  us your name.</p>
+            <div className="second">
+                <p>You can't proceed without a name!!!</p>
                 <Link to='/'><button>Click to go to Home</button></Link>
             </div>
             }
