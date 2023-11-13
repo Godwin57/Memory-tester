@@ -14,9 +14,9 @@ function App() {
     return (
         <>
             <WelcomePage name={name} setName={setName}/>
-            <SelectDifficulty difficulty={difficulty} name={name} setDifficulty={setDifficulty}/>
+            {/* <SelectDifficulty difficulty={difficulty} name={name} setDifficulty={setDifficulty}/>
             <DisplayGame animalEmojis={animalEmojis} score={score} setScore={setScore}
-                highScore={highScore} setHighScore={setHighScore} difficulty={difficulty}/>
+                highScore={highScore} setHighScore={setHighScore} difficulty={difficulty}/> */}
         </>
     );
 }

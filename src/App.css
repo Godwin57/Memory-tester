@@ -1,4 +1,17 @@
 body{
-  background: #3b3131;
+  background: rgb(47, 3, 61);
   color: white;
+}
+
+.Welcome button{
+  background: transparent;
+  padding: 5px 10px;
+  border-radius: 8px;
+  border: 1px solid white;
+}
+
+.Welcome a{
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
 }
