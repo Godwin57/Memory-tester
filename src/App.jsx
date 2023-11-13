@@ -28,7 +28,7 @@ function App() {
         {
             path: 'gameDisplay',
             element: <DisplayGame animalEmojis={animalEmojis} score={score} setScore={setScore}
-                highScore={highScore} setHighScore={setHighScore} difficulty={difficulty}/>
+                highScore={highScore} setHighScore={setHighScore} difficulty={difficulty} name={name}/>
         }
     ])
 
