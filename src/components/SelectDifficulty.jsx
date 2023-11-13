@@ -10,20 +10,22 @@ function SelectDifficulty({name, difficulty, setDifficulty}) {
     return (
         <div className="Difficulty">
             {name? 
-            <div>
-                <h1>Hi, {name}</h1>
+            <div className="first">
+                <h1>Hi, <span>{name}</span></h1>
                 <form>
-                    <input type="radio" name = 'diff' value={'easy'} onChange={e => setDifficulty(e.target.value)}/>Easy
-                    <input type="radio" name = 'diff' value={'medium'} onChange={e => setDifficulty(e.target.value)}/>Medium
-                    <input type="radio" name = 'diff' value={'hard'} onChange={e => setDifficulty(e.target.value)}/>Hard
+                    <div className="inputs">
+                        <div><input type="radio" name = 'diff' value={'easy'} onChange={e => setDifficulty(e.target.value)}/>Easy</div>
+                        <div><input type="radio" name = 'diff' value={'medium'} onChange={e => setDifficulty(e.target.value)}/>Medium</div>
+                        <div><input type="radio" name = 'diff' value={'hard'} onChange={e => setDifficulty(e.target.value)}/>Hard</div>
+                    </div>
 
-                    {difficulty !== ''? <button onClick={e => handleClick(e)}><Link to="/gameDisplay">Submit choice</Link></button> :
-                    <button onClick={e => handleClick(e)}>Submit choice</button>}
+                    {difficulty !== ''? <Link to="/gameDisplay"><button onClick={e => handleClick(e)}>Continue</button></Link> :
+                    <button onClick={e => handleClick(e)}>Continue</button>}
                 </form>
             </div>:
             <div>
                 <p>You can't proceed without giving  us your name.</p>
-                <button><Link to='/'>Click to go to Home</Link></button>
+                <Link to='/'><button>Click to go to Home</button></Link>
             </div>
             }
         </div>
