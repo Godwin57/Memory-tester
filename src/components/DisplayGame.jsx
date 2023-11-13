@@ -62,15 +62,9 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore, di
         setHighScore(_ => score)
     }, [score])
 
-    function resetStates () {
-        setScore(count => count = 0);
-        setAnimals(anims => anims = []);
-        setClickCount(count => count = 0);
-    }
-
     useEffect(() => {
         if (gameOver){
-            resetStates();
+            setScore(score => score = 0)
         }
     }, [gameOver])
 
@@ -84,6 +78,7 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore, di
             setGameLevel(_ => gameLevel + 1)
             setFinishedLevel(_ => true);
         }
+        return;
     }
 
     function handleEmojiClick(anim) {
