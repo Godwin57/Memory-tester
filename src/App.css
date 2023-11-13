@@ -25,6 +25,7 @@ a{
 }
 
 /* Section for Welcome component */
+/* Will still add animations to this component */
 .Welcome{
   display: flex;
   justify-content: center;
@@ -38,6 +39,10 @@ a{
   font-size: 50px;
 }
 
+.Welcome *{
+  cursor: pointer;
+}
+
 .Welcome h1 span{
   color: rgb(223, 223, 6);
 }
@@ -48,6 +53,10 @@ a{
   padding: 20px 30px;
   color: white;
   font-size: 18px;
+}
+
+.Welcome input:hover{
+  border: 1px solid lightgray;
 }
 
 .Welcome button{
