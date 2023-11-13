@@ -44,16 +44,25 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore, di
     useState(() => {
         if (gameOver){
             setGameLevel((level) = level = 1);
-            setAnimals(anim => anim = []);
+            setAnimals(anims => anims = []);
             setClickCount(count => count = 0);
-            setTimePerLevel(time => time = null)
+            setTimePerLevel(time => time = null);
+            setScore(0);
         }
     }, [gameOver])
 
     useEffect(() => {
-        difficulty === 'easy' && setAnimals(() => easy(animalEmojis, getCardNumberPerLevel(gameLevel)));
-        difficulty === 'medium' && setAnimals(() => medium(animalEmojis, getCardNumberPerLevel(gameLevel)));
-        difficulty === 'hard' && setAnimals(() => hard(animalEmojis, getCardNumberPerLevel(gameLevel)));
+        setClickCount(count => count = 0)
+    }, [finishedLevel])
+
+    useEffect(() => {
+        const unClickedAnimals = animalEmojis.map(anim => {
+            return {...anim, clicked: false};
+        });
+
+        difficulty === 'easy' && setAnimals(() => easy(unClickedAnimals, getCardNumberPerLevel(gameLevel)));
+        difficulty === 'medium' && setAnimals(() => medium(unClickedAnimals, getCardNumberPerLevel(gameLevel)));
+        difficulty === 'hard' && setAnimals(() => hard(unClickedAnimals, getCardNumberPerLevel(gameLevel)));
     }, [finishedLevel, difficulty])
 
     useEffect(() => {
