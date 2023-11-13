@@ -14,14 +14,20 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore, di
     const [finishedLevel, setFinishedLevel] = useState(false);
     const [clickCount, setClickCount] = useState(0);
     const [timePerLevel, setTimePerLevel] = useState(0);
+    const [pause, setPause] = useState(false)
 
+    let timer;
     useEffect(() => {
-        const timer = setInterval(() => {
+        timer = setTimeout(() => {
             setTimePerLevel((time) => time - 1);
         }, 1000)
 
-        return () => clearInterval(timer);
-    }, [gameLevel])
+        return () => clearTimeout(timer);
+    })
+
+    useEffect(() => {
+        pause && clearTimeout(timer)
+    }, [pause])
 
     useEffect(() => {
         setTimePerLevel(() => getGameTimePerLevel(gameLevel, difficulty))
@@ -50,6 +56,11 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore, di
     }
 
     function handleEmojiClick(anim) {
+        if(pause) {
+            alert("You can't do anything, the game is currently paused")
+            return;
+        }
+
         if (anim.clicked) {
             setGameOver(true);
             console.log("Game over")
@@ -75,6 +86,7 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore, di
                 <p>You have {timePerLevel} seconds left</p>
                 <p>High Score: {highScore}</p>
                 <p>Game Level: {gameLevel}</p>
+                <button onClick={() => setPause(!pause)}>{!pause? "Pause Game" : "Resume game"}</button>
                 <div>{animals.map(animal => 
                     <div key={animal.codes.toString()} >
                         <p style={{'cursor' : 'pointer'}} onClick={e => handleEmojiClick(animal)}>{animal.char}</p>

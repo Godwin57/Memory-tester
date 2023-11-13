@@ -3,20 +3,16 @@ body{
   color: white;
 }
 
-button, .btn{
+button{
   background: transparent;
   padding: 5px 10px;
   border-radius: 8px;
   border: 1px solid white;
+  color: white;
 }
 
 a{
   color: white;
   text-decoration: none;
   font-size: 18px;
-}
-
-.btn{
-  color: white;
-  cursor: pointer;
 }
