@@ -4,7 +4,7 @@
 }
 
 body{
-  background: black;
+  background: rgb(44, 42, 42);
   color: white;
 }
 
@@ -17,15 +17,22 @@ input{
 button{
   border-radius: 8px;
   padding: 25px 30px;
-  background: rgb(223, 223, 6);
+  background: rgb(160, 160, 11);
   border: none;
   color: white;
   cursor: pointer;
   font-size: 20px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 1);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25),
+  10px 10px 15px rgba(0, 0, 0, 0.25),
+  inset 5px 5px 5px rgba(0, 0, 0, 0.2),
+  inset 5px 5px 5px rgba(255, 255, 255, 0.5),
+  inset -5px -5px 5px rgba(0, 0, 0, .8);
 }
 
 button:hover{
-  background: rgb(160, 160, 11);
+  font-size: 18px;
+  transition: .5s;
 }
 
 a{
@@ -46,6 +53,7 @@ a{
 .Welcome h1, .Difficulty h1{
   font-weight: bolder;
   font-size: 50px;
+  text-shadow: 5px 5px 5px rgba(0, 0, 0, 1);
 }
 
 .Welcome *{
@@ -72,8 +80,10 @@ a{
   margin-left: -25px;
 }
 
-.Welcome .animalImage{
+.Welcome .animalImage, .Difficulty .animalImage{
   font-size: 100px;
+  text-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6),
+  -10px 0px 20px rgba(0, 0, 0, 0.6);
 }
 
 .Welcome .animalImage:hover{

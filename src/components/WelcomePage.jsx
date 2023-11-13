@@ -1,10 +1,6 @@
 import { Link } from "react-router-dom";
-import { randomlyBuildArr } from "./gameLogic";
-import { useEffect, useState } from "react";
 
-function WelcomePage({name, setName, animalEmojis}) {
-    const [animalEmoji, setAnimalEmoji] = useState({});
-
+function WelcomePage({name, setName, animalEmoji}) {
     const handleClick = e => {
         e.preventDefault();
         if(!name || name.length <= 3){
@@ -13,23 +9,10 @@ function WelcomePage({name, setName, animalEmojis}) {
         }
     }
 
-    useEffect(() => {
-        setAnimalEmoji(_ => randomlyBuildArr(animalEmojis, 1)[0]);
-    }, [])
-
-    let timer;
-    useEffect(() => {
-        timer = setTimeout(() => {
-            setAnimalEmoji(_ => randomlyBuildArr(animalEmojis, 1)[0])
-        }, 5000)
-
-        return () => clearTimeout(timer);
-    });
-
     return (
         <div className="Welcome">
             <h1>Animal <span>Klash</span></h1>
-            <p className="animalImage">{animalEmoji.char}</p>
+            <p className="animalImage">{animalEmoji}</p>
             <div className="Input">
                 <input type="text" value={name} onChange={(e) => setName(e.target.value)} maxLength={10} 
                 placeholder="Please enter your name here" autoFocus/>

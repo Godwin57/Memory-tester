@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import { randomlyBuildArr } from "./gameLogic";
+import { useEffect, useState } from "react";
 
-function SelectDifficulty({name, difficulty, setDifficulty}) {
+function SelectDifficulty({name, difficulty, setDifficulty, animalEmoji}) {
+
     const handleClick = e => {
         e.preventDefault();
         if(!difficulty) alert("You have to select a difficulty level to proceed");
@@ -12,6 +15,7 @@ function SelectDifficulty({name, difficulty, setDifficulty}) {
             {name? 
             <div className="first">
                 <h1>Hi, <span>{name}</span></h1>
+                <p className="animalImage">{animalEmoji}</p>
                 <form>
                     <div className="inputs">
                         <div><input type="radio" name = 'diff' value={'easy'} onChange={e => setDifficulty(e.target.value)}/>Easy</div>
