@@ -16,21 +16,13 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore, di
 
     useEffect(() => {
         setTimePerLevel(() => getGameTimePerLevel(gameLevel, difficulty))
-    }, [gameLevel])
+    }, [gameLevel, difficulty])
 
     useEffect(() => {
-        switch(difficulty){
-            case 'easy':
-                setAnimals(() => easy(animalEmojis, getCardNumberPerLevel(gameLevel)));
-                break;
-            case 'medium':
-                setAnimals(() => medium(animalEmojis, getCardNumberPerLevel(gameLevel)));
-                break;
-            case 'hard':
-                setAnimals(() => hard(animalEmojis, getCardNumberPerLevel(gameLevel)));
-                break;
-        }
-    }, [finishedLevel])
+        difficulty === 'easy' && setAnimals(() => easy(animalEmojis, getCardNumberPerLevel(gameLevel)));
+        difficulty === 'medium' && setAnimals(() => medium(animalEmojis, getCardNumberPerLevel(gameLevel)));
+        difficulty === 'hard' && setAnimals(() => hard(animalEmojis, getCardNumberPerLevel(gameLevel)));
+    }, [finishedLevel, difficulty])
 
     useEffect(() => {
         if(score < highScore) return;
