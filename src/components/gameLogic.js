@@ -77,7 +77,7 @@ export const PerLevelFeatures = function () {
         if (level < 1 || level > 5) {
             throw new PerLevelFeaturesError("Your game level can't be less than 1 or more than 5!")
         }
-        return getCardNumberPerLevel(level) * 2;
+        return getCardNumberPerLevel(level) * 10;
     }
 
     return { getCardNumberPerLevel, getGameTimePerLevel }

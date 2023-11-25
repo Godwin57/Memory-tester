@@ -92,7 +92,7 @@ a{
   transition: 1s;
 }
 
-.welcome-inner{
+.welcome-inner, .difficulty-inner{
   border: 2px solid black;
   display: flex;
   flex-direction: column;
@@ -124,31 +124,40 @@ a{
   inset -5px -5px 10px black;
 }
 
-.Welcome .first{
+.Welcome .first, .Difficulty .first-emoji{
   position: absolute;
   top: 100px;
   right: 21%;
 }
 
-.Welcome .second{
+.Welcome .second, .Difficulty .second-emoji{
   position: absolute;
-  top: 200px;
+  top: 300px;
   left: 21%;
 }
 
-.Welcome .third{
+.Welcome .third, .Difficulty .third-emoji{
   position: absolute;
-  bottom: 20px;
-  right: 25%;
+  bottom: 100px;
+  right: 21%;
 }
 
 /* selectDifficulty component's section  */
+.Difficulty{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  align-items: center;
+}
+
 .Difficulty .first{
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  min-height: 100vh;
   align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  gap: 50px;
 }
 
 .Difficulty .first form{

@@ -13,8 +13,8 @@ function GameOver({score, highScore}) {
             </p>)}
             <p>But always remember that you disappointed humanity and lost an ordinary mental war against ANIMALS!!</p>
             <p>That's enough shame for a person's lifetime!</p>
-            <button><Link to='/'>Click here to go home</Link></button>
-            <button><Link to='/difficulty'>Click here to select difficulty and start the war against the animals all over</Link></button>
+            <Link to='/'><button>Click here to go home</button></Link>
+            <Link to='/difficulty'><button>Click here to select difficulty and start the war against the animals all over</button></Link>
         </div>
     );
 }

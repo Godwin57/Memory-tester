@@ -21,14 +21,15 @@ function App() {
         setBgAnimalEmoji(_ => randomlyBuildArr(animalEmojis, 1)[0]);
     }, [])
 
-    let timer;
-    useEffect(() => {
-        timer = setTimeout(() => {
-            setAnimalEmoji(_ => randomlyBuildArr(animalEmojis, 1)[0])
-        }, 5000)
+    // let timer;
+    // useEffect(() => {
+    //     timer = setTimeout(() => {
+    //         setAnimalEmoji(_ => randomlyBuildArr(animalEmojis, 1)[0])
+    //         setBgAnimalEmoji(_ => randomlyBuildArr(animalEmojis, 1)[0])
+    //     }, 5000)
 
-        return () => clearTimeout(timer);
-    });
+    //     return () => clearTimeout(timer);
+    // });
 
     const router = createBrowserRouter([
         {
@@ -41,7 +42,7 @@ function App() {
         {
             path: 'difficulty',
             element: <SelectDifficulty difficulty={difficulty} name={name} setDifficulty={setDifficulty}
-            animalEmoji={animalEmoji.char}/>,
+            animalEmoji={animalEmoji.char} bgAnimalEmoji={bgAnimalEmoji.char}/>,
         },
 
         {
