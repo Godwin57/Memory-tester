@@ -44,10 +44,11 @@ a{
 /* Will still add animations to this component */
 .Welcome{
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
   min-height: 100vh;
+  position: relative;
 }
 
 .Welcome h1, .Difficulty h1{
@@ -89,6 +90,56 @@ a{
 .Welcome .animalImage:hover{
   font-size: 110px;
   transition: 1s;
+}
+
+.welcome-inner{
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 60vh;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.445),
+  -5px 5px 30px rgba(0, 0, 0, 0.363),
+  inset -10px -10px 20px rgba(0, 0, 0, 0.493),
+  inset -5px -5px 10px rgba(255, 255, 255, 0.267),
+  inset 5px 5px 10px rgba(255, 255, 255, 0.267);
+  width: 50vw;
+  border-radius: 30px;
+  padding: 20px 0;
+  z-index: 10;
+}
+
+.under-emoji{
+  font-size: 60px;
+  background: rgba(255, 255, 255, 0.404);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.705),
+  inset 5px 5px 20px white,
+  inset -5px -5px 10px black;
+}
+
+.Welcome .first{
+  position: absolute;
+  top: 100px;
+  right: 21%;
+}
+
+.Welcome .second{
+  position: absolute;
+  top: 200px;
+  left: 21%;
+}
+
+.Welcome .third{
+  position: absolute;
+  bottom: 20px;
+  right: 25%;
 }
 
 /* selectDifficulty component's section  */

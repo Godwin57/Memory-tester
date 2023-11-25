@@ -1,6 +1,4 @@
 import { Link } from "react-router-dom";
-import { randomlyBuildArr } from "./gameLogic";
-import { useEffect, useState } from "react";
 
 function SelectDifficulty({name, difficulty, setDifficulty, animalEmoji}) {
 

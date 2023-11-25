@@ -9,14 +9,16 @@ import ErrorPage from "./components/ErrorPage";
 import { randomlyBuildArr } from "./components/gameLogic";
 
 function App() {
-    const [name, setName] = useState('');
-    const [difficulty, setDifficulty] = useState('');
-    const [score, setScore] = useState(0);
-    const [highScore, setHighScore] = useState(0);
-    const [animalEmoji, setAnimalEmoji] = useState({});
+    const [name, setName] = useState(''),
+            [difficulty, setDifficulty] = useState(''),
+            [score, setScore] = useState(0),
+            [highScore, setHighScore] = useState(0),
+            [animalEmoji, setAnimalEmoji] = useState({}),
+            [bgAnimalEmoji, setBgAnimalEmoji] = useState({});
 
     useEffect(() => {
         setAnimalEmoji(_ => randomlyBuildArr(animalEmojis, 1)[0]);
+        setBgAnimalEmoji(_ => randomlyBuildArr(animalEmojis, 1)[0]);
     }, [])
 
     let timer;
@@ -31,7 +33,8 @@ function App() {
     const router = createBrowserRouter([
         {
             path: '/',
-            element: <WelcomePage name={name} setName={setName} animalEmoji={animalEmoji.char}/>,
+            element: <WelcomePage name={name} setName={setName} animalEmoji={animalEmoji.char} 
+                bgAnimalEmoji={bgAnimalEmoji.char}/>,
             errorElement: <ErrorPage />
         },
 
