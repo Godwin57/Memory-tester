@@ -122,7 +122,7 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore, di
                     </div> : 
                     <div>
                         <p>To play game, you have to choose a difficulty first</p>
-                        <button><Link to="/difficulty">Take this shortcut back to the difficulty page</Link></button>
+                        <Link to="/difficulty"><button>Take this shortcut back to the difficulty page</button></Link>
                     </div>
                     }
                 </div>:
