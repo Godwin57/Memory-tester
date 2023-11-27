@@ -101,15 +101,17 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore, di
         <>{!finishedGame?  
         <div>
             {!gameOver? 
-                <div>
-                    {difficulty !== ''? <div>
-                        <p>Score: {score}</p>
-                        <p>You have {timePerLevel} seconds left</p>
-                        <p>You choose: {difficulty}</p>
-                        <p>High Score: {highScore}</p>
-                        <p>Game Level: {gameLevel}</p>
-                        <button onClick={() => setPause(!pause)}>{!pause? "Pause Game" : "Resume game"}</button>
-                        <div>{animals.map(animal => 
+                <div className="GameOver-wrapper">
+                    {difficulty !== ''? <div className="GameOver">
+                        <div className="GameOver-header">
+                            <p>Score: {score}</p>
+                            <p>You have {timePerLevel} seconds left</p>
+                            <p>You choose: {difficulty}</p>
+                            <p>High Score: {highScore}</p>
+                            <p>Game Level: {gameLevel}</p>
+                            <button onClick={() => setPause(!pause)}>{!pause? "Pause Game" : "Resume game"}</button>
+                        </div>
+                        <div className="emoji-display">{animals.map(animal => 
                             <div key={animal.codes.toString()} >
                                 <p style={{'cursor' : 'pointer'}} onClick={e => handleEmojiClick(animal)}>{animal.char}</p>
                                 <p>{animal.name}</p>
