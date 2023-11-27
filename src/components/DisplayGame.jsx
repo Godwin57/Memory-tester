@@ -84,7 +84,6 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore, di
         }
 
         if (anim.clicked) {
-            console.log("Overrr")
             setGameOver(true);
             return;
         }
@@ -97,24 +96,28 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore, di
         handleLevelChange();
     }
 
+    
+
     return (
         <>{!finishedGame?  
-        <div>
+        <div className="GameOver-wrapper">
             {!gameOver? 
-                <div className="GameOver-wrapper">
+                <div>
                     {difficulty !== ''? <div className="GameOver">
                         <div className="GameOver-header">
-                            <p>Score: {score}</p>
-                            <p>You have {timePerLevel} seconds left</p>
-                            <p>You choose: {difficulty}</p>
-                            <p>High Score: {highScore}</p>
-                            <p>Game Level: {gameLevel}</p>
+                            {!pause? <div>
+                            <p>Score: <span>{score}</span></p>
+                            <p>You have <span>{timePerLevel}</span> seconds left</p>
+                            <p>You choose: <span>{difficulty}</span></p>
+                            <p>High Score: <span>{highScore}</span></p>
+                            <p>Game Level: <span>{gameLevel}</span></p> </div> : 
+                            <span>Game is currently paused. Click the button to resume</span> }
                             <button onClick={() => setPause(!pause)}>{!pause? "Pause Game" : "Resume game"}</button>
                         </div>
                         <div className="emoji-display">{animals.map(animal => 
                             <div key={animal.codes.toString()} >
-                                <p style={{'cursor' : 'pointer'}} onClick={e => handleEmojiClick(animal)}>{animal.char}</p>
-                                <p>{animal.name}</p>
+                                <p className="emoji-char" onClick={e => handleEmojiClick(animal)}>{animal.char}</p>
+                                <p className="emoji-name">{animal.name}</p>
                             </div>
                         )}
                         </div>

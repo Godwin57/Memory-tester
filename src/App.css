@@ -61,7 +61,7 @@ a{
   cursor: pointer;
 }
 
-.Welcome h1 span, .Difficulty h1 span{
+span{
   color: rgb(223, 223, 6);
 }
 
@@ -203,11 +203,71 @@ a{
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   min-height: 80vh;
   padding: 20px;
 }
 
+.GameOver-header{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 25px;
+  border-bottom: 1px solid black;
+  padding-bottom: 10px;
+  gap: 30px;
+}
+
+.GameOver-header span{
+  text-transform: capitalize;
+  font-weight: 800;
+}
+
+.GameOver-header div{
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.emoji-char{
+  width: 150px;
+  background: rgba(0, 0, 0, 0.644);
+  height: 150px;
+  font-size: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.712),
+  -5px 0 10px rgba(0, 0, 0, 0.575),
+  inset 3px 3px 10px rgba(255, 255, 255, 0.664),
+  inset 5px 5px 10px rgba(0, 0, 0, 0.753);
+  cursor: pointer;
+  padding: 10px;
+}
+
+.emoji-char:hover{
+  font-size: 65px;
+  transition: 1s;
+}
+
+.emoji-display{
+  margin-top: 30px;
+  display: flex;
+  gap: 50px;
+  max-width: 650px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.emoji-display div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
 
 /* Mobile version */
 @media (max-width:760px) {
