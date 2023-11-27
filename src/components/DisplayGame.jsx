@@ -34,7 +34,7 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore, di
         pause && clearTimeout(timer);
 
         return () => clearTimeout(timer);
-    }, [pause]);
+    });
 
     useEffect(() => {
         setTimePerLevel(() => getGameTimePerLevel(gameLevel))
