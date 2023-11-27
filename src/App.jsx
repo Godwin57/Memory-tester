@@ -21,9 +21,8 @@ function App() {
         setBgAnimalEmoji(_ => randomlyBuildArr(animalEmojis, 1)[0]);
     }, [])
 
-    let timer;
     useEffect(() => {
-        timer = setTimeout(() => {
+        let timer = setTimeout(() => {
             setAnimalEmoji(_ => randomlyBuildArr(animalEmojis, 1)[0])
             setBgAnimalEmoji(_ => randomlyBuildArr(animalEmojis, 1)[0])
         }, 5000)

@@ -183,3 +183,8 @@ a{
   height: 100vh;
   justify-content: space-around;
 }
+
+
+/* Mobile version */
+@media (max-width:760px) {
+}

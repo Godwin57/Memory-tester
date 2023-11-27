@@ -19,9 +19,8 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore, di
     const [timePerLevel, setTimePerLevel] = useState(null);
     const [pause, setPause] = useState(false)
 
-    let timer;
     useEffect(() => {
-        timer = setTimeout(() => {
+        let timer = setTimeout(() => {
             setTimePerLevel((time) => time - 1);
         }, 1000)
 
@@ -32,12 +31,10 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore, di
 
         gameOver && clearTimeout(timer);
 
-        return () => clearTimeout(timer);
-    })
+        pause && clearTimeout(timer);
 
-    useEffect(() => {
-        pause && clearTimeout(timer)
-    }, [pause])
+        return () => clearTimeout(timer);
+    }, [pause]);
 
     useEffect(() => {
         setTimePerLevel(() => getGameTimePerLevel(gameLevel))
