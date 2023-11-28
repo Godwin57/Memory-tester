@@ -120,7 +120,7 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore, di
             {!gameOver? 
                 <div>
                     {difficulty !== ''? <div>
-                        {!finishedLevel? <div className="GameDisplay">
+                        {!finishedLevel && gameLevel !== 5? <div className="GameDisplay">
                         <div className="GameDisplay-header">
                             {!pause? <div>
                             <p>Score: <span>{score}</span></p>

@@ -216,6 +216,10 @@ span{
   padding: 20px;
 }
 
+.GameDisplay-diff{
+  font-size: 30px;
+}
+
 .GameDisplay-header{
   width: 100%;
   display: flex;
