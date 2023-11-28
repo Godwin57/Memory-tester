@@ -6,6 +6,21 @@ import { Link } from "react-router-dom";
 import GameOver from "./GameOver";
 import Congratulations from "./Congratulations";
 
+function DisplayFinishedLevel ({setFinishedLevel, setPause}) {
+    const handleClick = () => {
+        setFinishedLevel(_ => false);
+        setPause(_ => false);
+    }
+
+    return(
+        <div className="DisplayFinishedLevel">
+            <h1>Congratulations, you've successfully finished this level</h1>
+
+            <button onClick={() => handleClick()}>Click to continue to the next level</button>
+        </div>
+    )
+}
+
 function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore, difficulty, name}) {
     const {easy, medium, hard} = Difficulty;
     const {getCardNumberPerLevel, getGameTimePerLevel} = PerLevelFeatures;
@@ -74,6 +89,7 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore, di
             }
             setGameLevel(_ => gameLevel + 1)
             setFinishedLevel(_ => true);
+            setPause(_ => true)
         }
     }
 
@@ -103,7 +119,8 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore, di
         <div className="GameDisplay-wrapper">
             {!gameOver? 
                 <div>
-                    {difficulty !== ''? <div className="GameDisplay">
+                    {difficulty !== ''? <div>
+                        {!finishedLevel? <div className="GameDisplay">
                         <div className="GameDisplay-header">
                             {!pause? <div>
                             <p>Score: <span>{score}</span></p>
@@ -121,8 +138,8 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore, di
                             </div>
                         )}
                         </div>
-                    </div> : 
-                    <div>
+                    </div>: <DisplayFinishedLevel setFinishedLevel={setFinishedLevel} setPause={setPause}/>}</div> : 
+                    <div className="GameDisplay-diff">
                         <p>To play game, you have to choose a difficulty first</p>
                         <Link to="/difficulty"><button>Take this shortcut back to the difficulty page</button></Link>
                     </div>

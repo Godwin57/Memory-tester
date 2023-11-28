@@ -199,7 +199,7 @@ span{
   align-items: center;
 }
 
-.GameDisplay{
+.GameDisplay, .GameDisplay-diff, .DisplayFinishedLevel{
   box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.445),
   -5px 5px 30px rgba(0, 0, 0, 0.363),
   inset -10px -10px 20px rgba(0, 0, 0, 0.493),
