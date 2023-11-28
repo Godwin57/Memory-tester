@@ -92,7 +92,7 @@ span{
   transition: 1s;
 }
 
-.welcome-inner, .difficulty-inner{
+.welcome-inner, .difficulty-inner, .GameOver{
   border: 2px solid black;
   display: flex;
   flex-direction: column;
@@ -109,6 +109,13 @@ span{
   border-radius: 30px;
   padding: 20px 0;
   z-index: 10;
+}
+
+.GameOver{
+  width: 80vw;
+  padding: 20px;
+  font-size: 20px;
+  min-height: 100vh;
 }
 
 .under-emoji{
