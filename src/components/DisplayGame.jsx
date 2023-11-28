@@ -100,11 +100,11 @@ function DisplayGame({animalEmojis, score, setScore, highScore, setHighScore, di
 
     return (
         <>{!finishedGame?  
-        <div className="GameOver-wrapper">
+        <div className="GameDisplay-wrapper">
             {!gameOver? 
                 <div>
-                    {difficulty !== ''? <div className="GameOver">
-                        <div className="GameOver-header">
+                    {difficulty !== ''? <div className="GameDisplay">
+                        <div className="GameDisplay-header">
                             {!pause? <div>
                             <p>Score: <span>{score}</span></p>
                             <p>You have <span>{timePerLevel}</span> seconds left</p>
