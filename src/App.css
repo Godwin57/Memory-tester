@@ -180,7 +180,8 @@ span{
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  padding: 10px;
+  height: 70vh;
   justify-content: space-around;
 }
 
@@ -214,7 +215,7 @@ span{
   justify-content: space-around;
   align-items: center;
   font-size: 25px;
-  border-bottom: 1px solid black;
+  border-bottom: 3px solid black;
   padding-bottom: 10px;
   gap: 30px;
 }
@@ -290,8 +291,4 @@ span{
   align-items: center;
   gap: 10px;
  } 
-
- .welcome-inner .Input button{
-  width: 80%;
- }
 }
